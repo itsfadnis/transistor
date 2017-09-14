@@ -1,0 +1,7 @@
+import constants from '../constants/@';
+
+export const fetch* = () => {};
+
+export const update* = () => {};
+
+export const save* = () => {};

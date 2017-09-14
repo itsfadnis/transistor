@@ -1,0 +1,17 @@
+{
+  "name": "flying-transistor",
+  "version": "1.0.0",
+  "description": "Redux boilerplate generator",
+  "main": "index.js",
+  "author": "Nikhil Fadnis",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^2.1.0",
+    "commander": "^2.11.0",
+    "dotenv": "^4.0.0"
+  },
+  "bin": {
+    "transistor": "./index.js",
+    "t": "./index.js"
+  }
+}
