@@ -7,7 +7,7 @@ var TemplateGenerator = require('./template-generator');
 function Transistor(stuff) {
   this.operation = stuff.operation;
   this.thing = stuff.thing;
-  this.resource = stuff.resource;
+  this.resource = stuff.resource
   this.path = stuff.path;
 }
 
@@ -27,35 +27,7 @@ Transistor.OPERATIONS = [
   'd'
 ];
 
-Transistor.prototype.validateOperation = function() {
-  if (this.constructor.OPERATIONS.indexOf(this.operation) === -1) {
-    throw new Error('Invalid operation: ' + this.operation);
-  }
-}
-
-Transistor.prototype.validateThing = function() {
-  if (this.constructor.THINGS.indexOf(this.thing) === -1) {
-    throw new Error('Invalid thing: ' + this.thing);
-  }
-}
-
-Transistor.prototype.validateResource = function() {
-  if (this.resource === undefined) {
-    throw new Error(
-      'Missing resource: transistor ' + this.operation + ' ' + this.thing + ' [resource]'
-    );
-  }
-}
-
-Transistor.prototype.validate = function() {
-  this.validateOperation();
-  this.validateThing();
-  this.validateResource();
-};
-
 Transistor.prototype.perform = function() {
-  this.validate();
-
   this[this.operation].call(this);
 };
 

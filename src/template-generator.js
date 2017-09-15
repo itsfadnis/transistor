@@ -2,10 +2,11 @@ var fs = require('fs');
 var snakecase = require('./helpers/dashcase-to-snakecase');
 var camelcase = require('./helpers/dashcase-to-camelcase');
 var capitalize = require('./helpers/capitalize');
+var dasherize = require('./helpers/dasherize');
 
 function TemplateGenerator(thing, resource) {
   this.thing = thing;
-  this.resource = resource;
+  this.resource = dasherize(resource);
 }
 
 TemplateGenerator.new = function(thing, resource) {
