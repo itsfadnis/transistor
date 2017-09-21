@@ -1,6 +1,6 @@
 {
   "name": "flying-transistor",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Scaffold redux boilerplate, increase productivity",
   "main": "index.js",
   "author": "Nikhil Fadnis",
