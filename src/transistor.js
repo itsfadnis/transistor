@@ -1,5 +1,3 @@
-var fs = require('fs');
-var path = require('path');
 var FileCreator = require('./file-creator');
 var FileDestroyer = require('./file-destroyer');
 var TemplateGenerator = require('./template-generator');
@@ -48,7 +46,7 @@ Transistor.prototype.pathToThing = function(thing) {
 Transistor.prototype.generateBlueprint = function() {
   var self = this;
 
-  ['constants', 'actions','reducer'].forEach(function(thing) {
+  ['constants', 'actions', 'reducer'].forEach(function(thing) {
     var filePath = self.pathToThing(thing) + '/' + self.resource + '.js';
     var content = TemplateGenerator.new(thing, self.resource).generateTemplate();
 
