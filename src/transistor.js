@@ -1,6 +1,7 @@
 var FileCreator = require('./file-creator');
 var FileDestroyer = require('./file-destroyer');
 var TemplateGenerator = require('./template-generator');
+var dasherize = require('./helpers/dasherize');
 
 function Transistor(stuff) {
   this.operation = stuff.operation;
@@ -47,7 +48,7 @@ Transistor.prototype.generateBlueprint = function() {
   var self = this;
 
   ['constants', 'actions', 'reducer'].forEach(function(thing) {
-    var filePath = self.pathToThing(thing) + '/' + self.resource + '.js';
+    var filePath = self.pathToThing(thing) + '/' + dasherize(self.resource) + '.js';
     var content = TemplateGenerator.new(thing, self.resource).generateTemplate();
 
     FileCreator.new(filePath, content).createFile();
@@ -60,7 +61,7 @@ Transistor.prototype.g = function() {
   if (this.thing === 'blueprint') {
     this.generateBlueprint();
   } else {
-    var filePath = this.pathToThing(this.thing) + '/' + this.resource + '.js';
+    var filePath = this.pathToThing(this.thing) + '/' + dasherize(this.resource) + '.js';
     var content = TemplateGenerator.new(this.thing, this.resource).generateTemplate();
 
     FileCreator.new(filePath, content).createFile();
@@ -71,7 +72,7 @@ Transistor.prototype.destroyBlueprint = function() {
   var self = this;
 
   ['constants', 'actions', 'reducer'].forEach(function(thing) {
-    var filePath = self.pathToThing(thing) + '/' + self.resource + '.js';
+    var filePath = self.pathToThing(thing) + '/' + dasherize(self.resource) + '.js';
 
     FileDestroyer.new(filePath).destroyFile();
   });
@@ -83,7 +84,7 @@ Transistor.prototype.d = function() {
   if (this.thing === 'blueprint') {
     this.destroyBlueprint();
   } else {
-    var filePath = this.pathToThing(this.thing) + '/' + this.resource + '.js';
+    var filePath = this.pathToThing(this.thing) + '/' + dasherize(this.resource) + '.js';
 
     FileDestroyer.new(filePath).destroyFile();
   }
